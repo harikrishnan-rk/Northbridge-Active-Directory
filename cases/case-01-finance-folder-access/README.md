@@ -1,111 +1,58 @@
-# 🔐 Case 01 — Finance Folder Access Issue
+# Case 01 — Finance Folder Access Issue
 
-## 📌 Case Summary
+## 📌 Overview
 
-A Finance user reports that they are unable to access the Finance department shared folder from the `FIN-PC01` workstation.
+A Finance user reported that they could log in to `FIN-PC01` but could not access the Finance shared folder.
 
-The objective is to investigate the reported access problem, identify the root cause, restore appropriate access, and validate the resolution.
+This case was investigated as a collaborative troubleshooting exercise between [Mr. Hari Krishnan R K](https://github.com/harikrishnan-rk), [Mr. Manu P Nair](https://github.com/manunair16), and [Mr. Varun M Nair](https://github.com/varunmnair95).
 
-This case is a collaborative exercise between [Mr. Hari Krishnan R K](https://github.com/harikrishnan-rk), [Mr. Manu P Nair](https://github.com/manunair16), and [Mr. Varun M Nair](https://github.com/varunmnair95), with each participant working in an independent lab environment and maintaining their own evidence and documentation.
+Each participant worked in an independent NorthBridge lab environment.
 
----
+## 👤 My Role
 
-## 🖥️ Environment
+**Helpdesk / Initial Triage**
 
-| Component                | Details                          |
-| ------------------------ | -------------------------------- |
-| 🌐 Domain                | `northbridge.local`              |
-| 🖥️ Domain Controller    | `SRV-DC01`                       |
-| 💻 Finance Workstation   | `FIN-PC01`                       |
-| 📂 Resource              | Finance department shared folder |
-| 👥 Expected Access Group | `GG_Finance`                     |
+My responsibility was to:
 
----
+* Receive and understand the reported issue
+* Reproduce the problem
+* Perform basic client-side checks
+* Collect initial evidence
+* Escalate the issue with useful information
 
-## 🤝 Case Roles
+## 🎫 Reported Issue
 
-| Participant                                                 | Role                        | Primary Responsibility                                                 |
-| ----------------------------------------------------------- | --------------------------- | ---------------------------------------------------------------------- |
-| [Mr. Hari Krishnan R K](https://github.com/harikrishnan-rk) | 🧑‍💻 Initial Triage        | User report, reproduction, initial checks and evidence collection      |
-| [Mr. Manu P Nair](https://github.com/manunair16)            | 🔍 Technical Investigation  | AD groups, share permissions, NTFS permissions and root-cause analysis |
-| [Mr. Varun M Nair](https://github.com/varunmnair95)         | 🛠️ Resolution & Validation | Remediation, access testing and final validation                       |
+The Finance user could successfully log into Windows but received an access-denied error when attempting to access the Finance shared folder.
 
-### My Role
+## 🔎 Initial Investigation
 
-**Initial Triage**
+I confirmed:
 
-My responsibility is to perform the first-level investigation of the reported Finance folder access problem.
+* Windows authentication was successful.
+* The workstation was functioning normally.
+* The Finance folder access problem could be reproduced.
+* The issue was related to access to the Finance resource rather than Windows login.
 
-I will focus on:
-
-* 📋 Reviewing the reported issue
-* 💻 Reproducing the problem from `FIN-PC01`
-* 👤 Verifying the affected user
-* 👥 Checking relevant group membership
-* 🌐 Performing basic connectivity checks
-* 📸 Collecting initial evidence
-* 📝 Documenting initial findings
-* 🔄 Handing off the findings for deeper technical investigation
-
----
-
-## 🔎 Investigation Flow
-
-```text
-User Report
-    ↓
-Initial Access Test
-    ↓
-User Verification
-    ↓
-Group Membership Check
-    ↓
-Basic Connectivity Check
-    ↓
-Evidence Collection
-    ↓
-Technical Investigation
-    ↓
-Remediation
-    ↓
-Validation
-    ↓
-Case Closure
-```
-
----
+The issue was escalated to IT Support for further authorization and permission investigation.
 
 ## 📸 Evidence
 
-Evidence collected during the initial triage will be stored under:
+Evidence for my Helpdesk investigation is stored under:
 
-`evidence/`
+`evidence/helpdesk/`
 
-The evidence will focus on the reported user impact and observations **before remediation**.
+## ✅ Outcome
 
----
+IT Support identified and corrected the authorization issue. Finance folder access was subsequently validated successfully.
 
-## 📊 Case Status
+## 🤝 Collaboration
 
-**Status:** 🔄 Initial Triage
+* [Mr. Hari Krishnan R K](https://github.com/harikrishnan-rk)
+* [Mr. Manu P Nair](https://github.com/manunair16)
+* [Mr. Varun M Nair](https://github.com/varunmnair95)
 
-**Root Cause:** To be determined
+Each participant maintained their own screenshots, findings, and documentation.
 
-**Resolution:** To be determined
+## 💡 Lesson Learned
 
-**Validation:** Pending
-
----
-
-## 🔗 Collaboration
-
-This case demonstrates a collaborative troubleshooting workflow while maintaining individual ownership of each participant's work.
-
-Each participant maintains:
-
-* 🧪 An independent lab environment
-* 📸 Their own screenshots and evidence
-* 📝 Their own findings and documentation
-* 👤 Their assigned role within the case
-
-The repositories are maintained independently rather than combining all three participants' work into a single repository.
+Helpdesk should establish the actual symptoms and gather useful information before making administrative changes. A successful Windows login does not necessarily mean the user is authorized to access every network resource.
