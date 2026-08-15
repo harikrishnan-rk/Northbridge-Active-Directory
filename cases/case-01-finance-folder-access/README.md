@@ -1,58 +1,93 @@
 # Case 01 — Finance Folder Access Issue
 
-## 📌 Overview
+## 🎫 Incident Summary
 
-A Finance user reported that they could log in to `FIN-PC01` but could not access the Finance shared folder.
+A Finance user reported that they could log in to `FIN-PC01` but could not access the Finance department shared folder.
 
-This case was investigated as a collaborative troubleshooting exercise between [Mr. Hari Krishnan R K](https://github.com/harikrishnan-rk), [Mr. Manu P Nair](https://github.com/manunair16), and [Mr. Varun M Nair](https://github.com/varunmnair95).
+**Ticket:** `NB-INC-001`
+**Category:** File Access
+**Priority:** Medium
+**Role:** Helpdesk / Initial Triage
 
-Each participant worked in an independent NorthBridge lab environment.
-
-## 👤 My Role
-
-**Helpdesk / Initial Triage**
+## 👤 My Responsibility
 
 My responsibility was to:
 
-* Receive and understand the reported issue
-* Reproduce the problem
-* Perform basic client-side checks
+* Confirm the affected user
+* Reproduce the reported problem
+* Perform basic client checks
 * Collect initial evidence
-* Escalate the issue with useful information
+* Escalate the issue to IT Support
 
-## 🎫 Reported Issue
-
-The Finance user could successfully log into Windows but received an access-denied error when attempting to access the Finance shared folder.
+No Active Directory, share, or NTFS permission changes were made during Helpdesk triage.
 
 ## 🔎 Initial Investigation
 
-I confirmed:
+### 1. Confirm User Identity
 
-* Windows authentication was successful.
-* The workstation was functioning normally.
-* The Finance folder access problem could be reproduced.
-* The issue was related to access to the Finance resource rather than Windows login.
+The `whoami` command confirmed that the affected session was using the domain account:
 
-The issue was escalated to IT Support for further authorization and permission investigation.
+`northbridge\sara.m`
+
+**Evidence:**
+`evidence/helpdesk/01-user-identity.png`
+
+### 2. Reproduce the Reported Issue
+
+I attempted to access the Finance shared folder:
+
+`\\SRV-DC01\Finance`
+
+Windows returned an access-denied message indicating that the user did not have permission to access the resource.
+
+**Evidence:**
+`evidence/helpdesk/02-finance-access-denied.png`
+
+### 3. Confirm Client Information
+
+The workstation was confirmed as:
+
+`FIN-PC01`
+
+The system information also showed the domain-qualified computer name:
+
+`FIN-PC01.northbridge.local`
+
+**Evidence:**
+`evidence/helpdesk/03-basic-client-check.png`
+
+## 📌 Helpdesk Finding
+
+The affected user was able to log in successfully, but access to the Finance shared folder was denied.
+
+At the Helpdesk stage, the specific cause of the authorization failure had not been established.
+
+The issue was therefore escalated to IT Support for further investigation.
 
 ## 📸 Evidence
 
-Evidence for my Helpdesk investigation is stored under:
+Helpdesk evidence is stored under:
 
 `evidence/helpdesk/`
 
-## ✅ Outcome
+## 🔄 Escalation
 
-IT Support identified and corrected the authorization issue. Finance folder access was subsequently validated successfully.
+**Escalation reason:**
+
+The access failure was reproducible, but determining the cause required further investigation of the user's authorization and the Finance resource permissions.
+
+## 💡 Lesson Learned
+
+Successful Windows authentication does not automatically provide access to every network resource.
+
+Helpdesk should first establish the user's identity, affected workstation, reported resource, and reproducible symptoms before escalating an access issue for administrative investigation.
 
 ## 🤝 Collaboration
+
+This case was completed collaboratively by:
 
 * [Mr. Hari Krishnan R K](https://github.com/harikrishnan-rk)
 * [Mr. Manu P Nair](https://github.com/manunair16)
 * [Mr. Varun M Nair](https://github.com/varunmnair95)
 
-Each participant maintained their own screenshots, findings, and documentation.
-
-## 💡 Lesson Learned
-
-Helpdesk should establish the actual symptoms and gather useful information before making administrative changes. A successful Windows login does not necessarily mean the user is authorized to access every network resource.
+Each participant worked in an independent NorthBridge lab environment and maintained their own evidence and documentation.
