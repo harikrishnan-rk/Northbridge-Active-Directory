@@ -30,7 +30,7 @@ The `whoami` command confirmed that the affected session was using the domain ac
 `northbridge\sara.m`
 
 **Evidence:**
-`evidence/helpdesk/01-user-identity.png`
+[User-identity](evidence/helpdesk/01-user-identity.png)
 
 ### 2. Reproduce the Reported Issue
 
@@ -41,7 +41,7 @@ I attempted to access the Finance shared folder:
 Windows returned an access-denied message indicating that the user did not have permission to access the resource.
 
 **Evidence:**
-`evidence/helpdesk/02-finance-access-denied.png`
+[Finance-access-denied](evidence/helpdesk/02-finance-access-denied.png)
 
 ### 3. Confirm Client Information
 
@@ -54,7 +54,7 @@ The system information also showed the domain-qualified computer name:
 `FIN-PC01.northbridge.local`
 
 **Evidence:**
-`evidence/helpdesk/03-basic-client-check.png`
+[Basic-client-check](evidence/helpdesk/03-basic-client-check.png)
 
 ## 📌 Helpdesk Finding
 
@@ -68,7 +68,7 @@ The issue was therefore escalated to IT Support for further investigation.
 
 Helpdesk evidence is stored under:
 
-`evidence/helpdesk/`
+[evidence/helpdesk/](evidence/helpdesk)
 
 ## 🔄 Escalation
 
